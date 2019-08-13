@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <title>WebRTC</title>
   </head>
   <body>
@@ -13,8 +13,8 @@
     </div>
     <div class="top-container">
       <video id="video">Stream not available.....</video>
-      <button id="photo-button class=" btn btn-dark>Take photo</button>
-      <select id="photo-filter">
+      <button id="photo-button" class="btn btn-dark">Take photo</button>
+      <select id="photo-filter" class="select">
         <option value="none">Normal</option>
         <option value="grayscale(100%)">GrayScale</option>
         <option value="sepia(100%)">sepia</option>
@@ -23,7 +23,7 @@
         <option value="blur(10px)">Blur</option>
         <option value="contrast(200%)">Contrast</option>
       </select>
-      <button id="clear-button">Clear</button>
+      <button id="clear-button" class="btn btn-light">Clear</button>
       <canvas id="canvas"></canvas>
     </div>
     <div class="bottom-container">

@@ -31,6 +31,7 @@ video.addEventListener(
     if (!streaming) {
       //set video /canvas height
       height = video.videoHeight / (video.videoWidth / width);
+
       video.setAttribute("width", width);
       video.setAttribute("height", height);
       canvas.setAttribute("width", width);
@@ -41,3 +42,55 @@ video.addEventListener(
   },
   false
 );
+
+// Photo button event
+photoButton.addEventListener("click", e => {
+  takePicture();
+  e.preventDefault();
+});
+
+// Filter event
+photoFilter.addEventListener("change", e => {
+  // set filter
+  filter = e.target.value;
+  video.style.filter = filter;
+  e.preventDefault();
+});
+
+// clear event
+
+clearButton.addEventListener("click", e => {
+  // clear photos
+  photos.innerHTML = "";
+  filter = "none";
+  video.style.filter = filter;
+  photoFilter.selectedIndex = 0;
+});
+
+function takePicture() {
+  // create canvas
+  const context = canvas.getContext("2d");
+  if (width && height) {
+    // set canvas props
+    canvas.width = width;
+    canvas.height = height;
+    // Draw image of the video of the canvas
+    context.drawImage(video, 0, 0, width, height);
+  }
+
+  // Create image frrom the canvas
+  const ImgUrl = canvas.toDataURL("image/png");
+
+  // Crreate image element
+
+  const img = document.createElement("img");
+
+  // Set image src
+  img.setAttribute("src", ImgUrl);
+
+  // Set image filter
+  img.style.filter = filter;
+
+  // Add image to photos
+  photos.appendChild(img);
+}
